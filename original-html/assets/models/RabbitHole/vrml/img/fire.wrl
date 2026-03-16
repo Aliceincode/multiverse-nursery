@@ -1,0 +1,348 @@
+#VRML V2.0 utf8
+ EXTERNPROTO Particles[
+	exposedField SFVec3f bboxSize
+	exposedField SFVec3f bboxCenter
+	exposedField SFFloat lodRange
+	exposedField SFBool enabled
+	exposedField SFFloat particleRadius
+	exposedField SFFloat particleRadiusVariation
+	exposedField SFFloat particleRadiusRate
+	exposedField SFNode geometry
+	exposedField SFVec3f emitterPosition
+	exposedField SFFloat emitterRadius
+	exposedField SFFloat emitterSpread
+	exposedField SFVec3f emitVelocity
+	exposedField SFFloat emitVelocityVariation
+	exposedField SFRotation emitterOrientation
+	exposedField SFFloat creationRate
+	exposedField SFFloat creationRateVariation
+	exposedField SFInt32 maxParticles
+	exposedField SFTime maxLifeTime
+	exposedField SFFloat maxLifeTimeVariation
+	exposedField SFVec3f gravity
+	exposedField SFVec3f acceleration
+	exposedField SFColor emitColor
+	exposedField SFColor fadeColor
+	exposedField SFFloat fadeAlpha
+	exposedField SFFloat fadeRate
+	exposedField SFInt32 numTrails
+	exposedField SFInt32 numSparks
+	exposedField SFVec3f sparkGravity
+	exposedField SFColor sparkFadeColor
+]
+["urn:inet:blaxxun.com:node:Particles","http://www.blaxxun.com/vrml/protos/nodes.wrl#Particles","nodes.wrl#Particles"]
+ DEF Fire Transform {
+	translation	-9.4 -3 -7
+	scale 1 1 1
+	children [Transform {
+			translation 0 -1.75 0
+			children
+			[
+				Shape {
+					appearance Appearance {
+						material Material {}
+						texture ImageTexture { url "RabbitHole/vrml/particles/flame3.png"}
+					}
+					geometry Particles
+					{
+						lodRange 300
+						particleRadius .01
+						particleRadiusRate 1
+						particleRadiusVariation 0.1
+
+						enabled TRUE
+						emitColor 1 1 1
+						fadeColor .8 .8 .8
+
+						fadeRate 0.8
+						fadeAlpha 0
+						emitterPosition 0 0 0
+						emitterRadius 1
+						emitterSpread .1
+
+						creationRate 200
+
+						maxParticles 500
+						maxLifeTime 2
+
+						emitVelocity 2 1 2
+						gravity 0 -2 0
+
+
+
+					}
+				}
+			]
+		}
+	]
+} 
+DEF Smoke Transform {
+	translation	-9.4 -2 -7
+	scale 1 1 1
+	children [Transform {
+			translation 0 -1.75 0
+			children
+			[
+				Shape {
+					appearance Appearance {
+						material Material {}
+						texture ImageTexture { url "RabbitHole/vrml/particles/smoke.png"}
+					}
+					geometry Particles
+					{
+						lodRange 300
+						particleRadius .01
+						particleRadiusRate 1
+						particleRadiusVariation 0.1
+
+						enabled TRUE
+						emitColor 1 1 1
+						fadeColor .8 .8 .8
+
+						fadeRate 0.8
+						fadeAlpha 0
+						emitterPosition 0 0 0
+						emitterRadius 1
+						emitterSpread .2
+
+						creationRate 100
+
+						maxParticles 100
+						maxLifeTime 2
+
+						emitVelocity 2 7 2
+						gravity 0 -2 0
+
+
+
+					}
+				}
+			]
+		}
+	]
+}
+DEF SmokeholeB Transform {
+	translation	-8.4 -5 5
+	scale 1 1 1
+	children [Transform {
+			translation 0 -1.75 0
+			children
+			[
+				Shape {
+					appearance Appearance {
+						material Material {}
+						texture ImageTexture { url "RabbitHole/vrml/particles/smokeHole.png"}
+					}
+					geometry Particles
+					{
+						lodRange 300
+						particleRadius .01
+						particleRadiusRate 1
+						particleRadiusVariation 0.1
+
+						enabled TRUE
+						emitColor 1 1 1
+						fadeColor .8 .8 .8
+
+						fadeRate 0.8
+						fadeAlpha 0
+						emitterPosition 0 0 0
+						emitterRadius 1
+						emitterSpread .5
+
+						creationRate 100
+
+						maxParticles 100
+						maxLifeTime 2
+
+						emitVelocity 2 7 2
+						gravity 0 -2 0
+
+
+
+					}
+				}
+			]
+		}
+	]
+}
+DEF LowerG Transform {
+	translation	60 -395 0
+	scale 1 1 1
+	children [Transform {
+			translation 0 -1.75 0
+			children
+			[
+				Shape {
+					appearance Appearance {
+						material Material {}
+						texture ImageTexture { url "RabbitHole/vrml/images/flameB.png"}
+					}
+					geometry Particles
+					{
+						lodRange 300
+						particleRadius .01
+						particleRadiusRate 1
+						particleRadiusVariation 0.1
+
+						enabled TRUE
+						emitColor 1 1 1
+						fadeColor .8 .8 .8
+
+						fadeRate 0.8
+						fadeAlpha 0
+						emitterPosition 0 0 0
+						emitterRadius 1
+						emitterSpread .2
+
+						creationRate 100
+
+						maxParticles 500
+						maxLifeTime 2
+
+						emitVelocity 20 15 20
+						gravity 0 -2 0
+
+
+
+					}
+				}
+			]
+		}
+	]
+}
+DEF LowerB Transform {
+	translation	-70.4 -410 0
+	scale 1 1 1
+	children [Transform {
+			translation 0 -1.75 0
+			children
+			[
+				Shape {
+					appearance Appearance {
+						material Material {}
+						texture ImageTexture { url "RabbitHole/vrml/particles/smokeHole.png"}
+					}
+					geometry Particles
+					{
+						lodRange 300
+						particleRadius .01
+						particleRadiusRate 1
+						particleRadiusVariation 0.1
+
+						enabled TRUE
+						emitColor 1 1 1
+						fadeColor .8 .8 .8
+
+						fadeRate 0.8
+						fadeAlpha 0
+						emitterPosition 0 0 0
+						emitterRadius 1
+						emitterSpread .2
+
+						creationRate 100
+
+						maxParticles 500
+						maxLifeTime 2
+
+						emitVelocity 40 30 40
+						gravity 0 -2 0
+
+
+
+					}
+				}
+			]
+		}
+	]
+}
+DEF LowerG1 Transform {
+	translation	0 -385 70
+	scale 1 1 1
+	children [Transform {
+			translation 0 -1.75 0
+			children
+			[
+				Shape {
+					appearance Appearance {
+						material Material {}
+						texture ImageTexture { url "RabbitHole/vrml/images/flameB.png"}
+					}
+					geometry Particles
+					{
+						lodRange 300
+						particleRadius .01
+						particleRadiusRate 1
+						particleRadiusVariation 0.1
+
+						enabled TRUE
+						emitColor 1 1 1
+						fadeColor .8 .8 .8
+
+						fadeRate 0.8
+						fadeAlpha 0
+						emitterPosition 0 0 0
+						emitterRadius 1
+						emitterSpread .2
+
+						creationRate 100
+
+						maxParticles 500
+						maxLifeTime 2
+
+						emitVelocity 20 15 20
+						gravity 0 -2 0
+
+
+
+					}
+				}
+			]
+		}
+	]
+}
+DEF LowerB1 Transform {
+	translation	0.4 -410 -70
+	scale 1 1 1
+	children [Transform {
+			translation 0 -1.75 0
+			children
+			[
+				Shape {
+					appearance Appearance {
+						material Material {}
+						texture ImageTexture { url "RabbitHole/vrml/particles/smokeHole.png"}
+					}
+					geometry Particles
+					{
+						lodRange 300
+						particleRadius .01
+						particleRadiusRate 1
+						particleRadiusVariation 0.1
+
+						enabled TRUE
+						emitColor 1 1 1
+						fadeColor .8 .8 .8
+
+						fadeRate 0.8
+						fadeAlpha 0
+						emitterPosition 0 0 0
+						emitterRadius 1
+						emitterSpread .2
+
+						creationRate 100
+
+						maxParticles 500
+						maxLifeTime 2
+
+						emitVelocity 40 30 40
+						gravity 0 -2 0
+
+
+
+					}
+				}
+			]
+		}
+	]
+}

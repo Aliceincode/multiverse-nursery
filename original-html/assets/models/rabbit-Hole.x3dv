@@ -1,0 +1,319 @@
+#VRML V2.0 utf8
+WorldInfo
+{
+	title	"minigrok-caves"
+	info	"Aliceincode"
+}
+NavigationInfo
+{
+	type [ "WALK"  "ANY" ]
+	headlight	TRUE
+	speed		1.000000
+}
+
+DEF Enter Viewpoint{
+	position -5 -1.5 -12
+	orientation 0.0 1.0 0.0 2.8
+	description "Caves Entrance"
+	jump TRUE
+}
+DEF DownTheHole Viewpoint{
+	position 2 -405 0
+	orientation 0.0 1.0 0.0 0
+	fieldOfView 1.5 
+	description "Rabbit Hole"
+	jump TRUE
+}
+PointLight {
+	location -8 -3.25 -8
+	intensity 1
+	color 1 0 0	
+}
+PointLight {
+	location -8 -400 -8
+	intensity 1
+	color 1 1 1	
+}
+# Prebuilt scene lighting
+# 4 light version
+DEF L1 DirectionalLight {
+ intensity 0.4
+ direction -.9437 -.2972 .1451
+ color 1 0 0
+}
+DEF L2 DirectionalLight {
+ intensity 0.8
+ direction .3255 -.3316 -.8855
+ color 1 0 0
+}
+DEF L3 DirectionalLight {
+ intensity 0.4
+ direction .755 -.252 .6054
+}
+DEF L4 DirectionalLight {
+ intensity 0.3
+ direction .1013 .9948 .003768
+}
+Background{
+	skyColor[ 0.0 0.0 0.0
+	]
+	skyAngle [ 1.309, 1.571]
+	groundColor[
+		0 0 0
+	]
+	groundAngle [1.309, 1.571]
+	frontUrl ["RabbitHole/vrml/images/space_1_front.jpg"]
+	backUrl ["RabbitHole/vrml/images/space_1_back.jpg"]
+	leftUrl ["RabbitHole/vrml/images/space_1_left.jpg"]
+	rightUrl ["RabbitHole/vrml/images/space_1_right.jpg"]
+	topUrl ["RabbitHole/vrml/images/space_1_top.jpg"]
+	bottomUrl ["RabbitHole/vrml/images/space_1_bottom.jpg"]
+}
+Fog {
+	fogType "LINEAR"
+	visibilityRange 180
+	color 0.1 0.1 0.1
+}
+Background {
+	skyColor 1 0 0
+}
+#Sound {
+#source DEF MusicClip1 AudioClip {
+#url "RabbitHole/vrml/campfire-1.wav"
+#description "Fire"
+#loop TRUE
+#},
+#location 0 0 0
+#minFront 5
+#minBack  5
+#maxFront 50
+#maxBack  50
+#spatialize FALSE
+#}
+Sound {
+source DEF MusicClip2 AudioClip {
+url "RabbitHole/vrml/om.wav"
+description "Fire"
+loop TRUE
+},
+location 0 -390 0
+minFront 5
+minBack  5
+maxFront 150
+maxBack  150
+intensity .3
+spatialize FALSE
+}
+Transform {
+	translation	0 0 0
+	rotation 0 1 0 0
+	scale 1 1 1
+	children [	 Inline	{ url "RabbitHole/Rabhole.wrz" }
+	]
+}
+#Transform {
+#	translation	-8 -3.5 -8
+#	rotation 0 1 0 -1
+#	scale .3 .3 .3
+#	children [	 Inline	{ url "RabbitHole/vrml/campfire.wrz" }
+#	]
+#}
+Transform {
+	translation	-20 -410 -40
+	rotation 0 1 0 3.14
+	scale 1.5 1.5 1.5
+	children [	 Inline	{ url "RabbitHole/vrml/hilarion_key.wrz" }
+	]
+}
+Transform {
+	translation	-10 -405.6 -10
+	rotation 0 1 0 0
+	scale 1 1 1
+	children [	 Inline	{ url "RabbitHole/vrml/float.wrz" }
+	]
+}
+Transform {
+	translation	10 -405.4 -12
+	rotation 0 1 0 0
+	scale 1 1 1
+	children [	 Inline	{ url "RabbitHole/vrml/float.wrz" }
+	]
+}
+Transform {
+	translation	-30 -405.6 -10
+	rotation 0 1 0 0
+	scale 1 1 1
+	children [	 Inline	{ url "RabbitHole/vrml/float.wrz" }
+	]
+}
+#Transform {
+#	translation	0 -406.5 0
+#	rotation 0 1 0 0
+#	scale 1 1 1
+#	children [	 Inline	{ url "RabbitHole/vrml/img/elevator.wrz" }
+#	]
+#}
+#Transform {
+#	translation	0 .2 -10
+#	scale 4 4 4
+#	children [	 Inline	{ url "balls.wrz" }
+#	]
+#}
+#Transform {
+#	translation	0 -208 -10
+#	scale 3.5 2 3.5
+#	children [	 Inline	{ url "RabbitHole/vrml/floor.wrz" }
+#	]
+#}
+Transform {
+	translation	0 -400 -80
+	rotation 0 1 0 0
+	scale .5 .5 .5
+	children [	 Inline	{ url "RabbitHole/vrml/img/dreagonfly_externo.wrz" }
+	]
+}
+DEF roots Transform {
+	children [
+		Transform {
+			translation	-4.5 -3.7 2
+			scale 4 4 4
+			children [	 Inline	{ url "RabbitHole/vrml/treeRoot.wrz" }
+			]
+		} 
+		Transform {
+			translation	-55.5 -411 -25
+			rotation 0 1 0 3.14
+			scale 4 4 4
+			children [	 Inline	{ url "RabbitHole/vrml/treeRoot.wrz" }
+			]
+		} 
+	]
+}
+#Transform {
+#	translation	0 -370 75
+#	rotation 0 1 0 3.14
+#	scale 3 3 3
+#	children [	 Inline	{ url "RabbitHole/vrml/mask.wrz" }
+#	]
+#}
+#Transform {
+#	translation	65 -380 0
+#	rotation 0 1 0 -1.571
+#	scale 3 3 3
+#	children [	 Inline	{ url "RabbitHole/vrml/mask.wrz" }
+#	]
+#}
+#Transform {
+#	translation	-75 -380 0
+#	rotation 0 1 0 1.571
+#	scale 3 3 3
+#	children [	 Inline	{ url "RabbitHole/vrml/mask.wrz" }
+#	]
+#}
+#Transform {
+#	translation	0 -390 -75
+#	rotation 0 1 0 0
+#	scale 3 3 3
+#	children [	 Inline	{ url "RabbitHole/vrml/mask.wrz" }
+#	]
+#}
+Transform {
+	translation	0 6 33
+	children [
+		Transform {
+			translation	-6 -408.9 0
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		} 
+		Transform {
+			translation	-8 -408 7
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		}
+		Transform {
+			translation	-16 -407 10
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		} 
+		Transform {
+			translation	-18 -406 17
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		}
+	]
+}
+Transform {
+	translation	16 7 33
+	children [
+		Transform {
+			translation	-6 -408.9 0
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		} 
+		Transform {
+			translation	-8 -408 7
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		}
+		Transform {
+			translation	-16 -407 10
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		} 
+		Transform {
+			translation	-18 -406 17
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		}
+	]
+}
+Transform {
+	translation	30 -6 -50
+	children [
+		Transform {
+			translation	-6 -408.9 0
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		} 
+		Transform {
+			translation	-8 -408 7
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		}
+		Transform {
+			translation	-16 -407 10
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		} 
+		Transform {
+			translation	-18 -406 17
+			rotation 0 1 0 1.571
+			scale 2 2 2
+			children [	 Inline	{ url "RabbitHole/vrml/mushyPath.wrz" }
+			]
+		}
+	]
+}
+

@@ -1,0 +1,58 @@
+# RStudio / R workspace files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata/
+.Rprofile
+.Renviron
+
+# R temporary / cache files
+*.Rproj
+temp/
+tmp/
+cache/
+.Rtmp*
+session-temp*
+
+# Output files from knitting / rendering
+*.html
+*.pdf
+*.docx
+*_files/
+*_cache/
+figure/
+
+# Large / generated files (protect your 100GB playground sanity)
+*.RData
+*.Rda
+*.rds
+*.Rhistory
+logs/
+data/raw/               # ← add if you have big raw data
+data/intermediate/
+
+# Build / dependency folders
+node_modules/
+bower_components/
+dist/
+build/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# Puter.js / web experiment temp
+*.log
+*.tmp
+*.bak
+
+# Keep these commented if you ever want to commit them later
+# screenshots/            # ← uncomment if you want to track playground pics
+# docs/                   # ← for knitted outputs if useful
+.Rproj.user
+.httr-oauth
+.quarto

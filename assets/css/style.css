@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+/* style.css  */
+/* Created: March 2026 */
+body { margin:0; overflow:hidden; background:#000; font-family:sans-serif; }
+#chat { position:absolute; bottom:0; left:0; width:100%; background:rgba(0,0,0,0.6); color:white; padding:10px; box-sizing:border-box; }
+#messages { max-height:200px; overflow-y:auto; margin-bottom:10px; }
+.grok-msg { background:#001f3f; padding:8px; border-radius:8px; margin:5px 0; }

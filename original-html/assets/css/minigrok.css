@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+/* minigrok.css - Styles for Mini Grok's Rabbit Hole Caves */
+/* Created: March 2026 */
+body { margin:0; overflow:hidden; background:#000; font-family:sans-serif; }
+x3dcanvas { width:100vw; height:70vh; }
+#chat { position:absolute; bottom:0; left:0; width:100%; background:rgba(0,0,0,0.6); color:white; padding:10px; box-sizing:border-box; }
+#messages { max-height:200px; overflow-y:auto; margin-bottom:10px; }
+.grok-msg { background:#001f3f; padding:8px; border-radius:8px; margin:5px 0; }
+.msg.minigrok::before {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: url('../assets/images/minigrok-wizard.png') center/cover no-repeat;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
