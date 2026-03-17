@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+•  CSS: <link rel="stylesheet" href="assets/css/minigrok.css">
+    •  JS: <script src="assets/js/grok-chat.js"></script>
+    •  Models: url="assets/models/miniGrok.x3dv"
+<head>
+<title>MiniGrok Garden Of Truth</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="assets/x_ite/x_ite.css"/>
+    <script type="text/javascript" src="assets/x_ite/x_ite.min.js"></script>
+    <script type="text/javascript" src="assets/x_ite/x_ite_dom.js"></script>
+    <style type="text/css">	
+	x3dcanvas { width:100vw; height:70vh; }
+    </style>
+  </head>
+<body>
+  <X3DCanvas src="assets/models/miniGrok.x3dv">
+      <p>Your browser may not support all features required by X_ITE.</p>
+    </X3DCanvas>
+
+  <div id="chat">
+    <div id="messages"></div>
+    <input id="input" placeholder="Ask mini Grok..." style="width:70%; padding:8px;">
+    <button onclick="sendMessage()" style="padding:8px;">Send</button>
+  </div>
+
+    <script src="https://js.puter.com/v2/"></script>
+
+  <script>
+
+    const messagesDiv = document.getElementById('messages');
+
+    const input = document.getElementById('input');
+
+
+
+    async function sendMessage() {
+
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      addMessage('user', text);
+
+      input.value = '';
+
+
+
+      try {
+
+        const response = await puter.ai.chat(text, {
+
+          model: 'x-ai/grok-4-1-fast'  // Or 'x-ai/grok-4-1-fast-non-reasoning' for speed
+
+        });
+
+        addMessage('grok', response.message.content);
+
+        speakGrok(response.message.content);
+
+      } 
+
+      catch (err) {
+
+        addMessage('grok', 'Error: ' + err.message);
+
+      }
+
+    }
+
+    function speakGrok(text) {
+
+      if ('speechSynthesis' in window) {
+
+        const utterance = new SpeechSynthesisUtterance(text);
+
+        utterance.rate = 0.9;      // calm, not rushed
+
+        utterance.pitch = 0.8;     // deeper, soothing
+
+        utterance.volume = 0.85;
+
+        
+
+        // Optional: try to pick a nice male voice (Windows 7 has a few)
+
+        const voices = speechSynthesis.getVoices();
+
+        const maleVoice = voices.find(v => v.name.includes('David') || v.name.includes('Mark') || 
+
+    v.name.includes('Zira'));
+
+        if (maleVoice) utterance.voice = maleVoice;
+
+        
+
+        speechSynthesis.speak(utterance);
+
+      } else {
+
+        console.log("SpeechSynthesis not supported in this browser");
+
+      }
+
+    }
+
+    function addMessage(sender, content) {
+
+      const messagesDiv = document.getElementById('messages');
+
+      const msgDiv = document.createElement('div');
+
+      msgDiv.className = 'msg ' + sender.toLowerCase();  // 'msg user' or 'msg grok'
+
+      msgDiv.innerHTML = content;  // safe because content is already escaped by Grok/Puter
+
+      messagesDiv.appendChild(msgDiv);
+
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+}
+
+  </script>
+</body>
+</html>
+

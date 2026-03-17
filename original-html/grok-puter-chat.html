@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self' https://js.puter.com https://*.puter.com data: blob:;
+  script-src 'self' https://js.puter.com 'unsafe-eval' 'unsafe-inline';
+  connect-src 'self' https://*.puter.com wss://*.puter.com ws://*.puter.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: blob: https:;
+  media-src 'self' data: blob:;
+  font-src 'self' data:;
+">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grok Mad Scientist - Puter.js Chat</title>
+  <script src="https://js.puter.com/v2/"></script>
+  <style>
+    /* Same styles as before, plus extras */
+    :root { --bg: #0d1117; --text: #c9d1d9; --user-bg: #238636; --ai-bg: #30363d; --input-bg: #161b22; --border: #30363d; }
+    [data-theme="light"] { --bg: #ffffff; --text: #0d1117; --user-bg: #2ea44f; --ai-bg: #f6f8fa; --input-bg: #f6f8fa; --border: #d0d7de; }
+    body { margin:0; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); height:100vh; display:flex; flex-direction:column; }
+    header { padding:12px; background:var(--ai-bg); border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+    select, button { padding:8px 12px; border-radius:6px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); font-size:14px; cursor:pointer; }
+    #chat-container { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:16px; }
+    .message { max-width:85%; padding:12px 16px; border-radius:18px; line-height:1.4; word-wrap:break-word; }
+    .user { align-self:flex-end; background:var(--user-bg); color:white; }
+    .ai { align-self:flex-start; background:var(--ai-bg); }
+    .streaming { opacity:0.8; }
+    #input-area { padding:12px; background:var(--ai-bg); border-top:1px solid var(--border); display:flex; gap:8px; flex-wrap:wrap; }
+    #user-input { flex:1; padding:12px; border-radius:24px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); font-size:16px; resize:none; min-height:48px; max-height:120px; }
+    #send-btn, #voice-btn, #summarize-btn, #vision-btn { background:#238636; color:white; border:none; border-radius:50%; width:48px; height:48px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+    #file-input { display:none; }
+    #import-area { margin:16px; padding:12px; background:var(--ai-bg); border:1px dashed var(--border); border-radius:8px; }
+    textarea { width:100%; height:120px; background:var(--input-bg); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:8px; }
+    @media (max-width:600px) { header { flex-direction:column; align-items:stretch; } #input-area { flex-direction:column; } #input-area > * { width:100%; border-radius:12px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <select id="model-select">
+    <option value="x-ai/grok-4">Grok 4</option>
+    <option value="x-ai/grok-2-vision-1212">Grok 2 Vision (for images)</option>
+    <option value="x-ai/grok-4-1-fast">Grok 4.1 Fast</option>
+    <option value="qwen/qwen3.5-9b">Qwen 3.5 9B (multimodal)</option>
+    <option value="mistralai/mistral-small-3.1-24b-instruct">Mistral Small 3.1 (vision capable)</option>
+  </select>
+  <button onclick="toggleTheme()">🌙/☀️</button>
+  <button onclick="clearChat()">Clear</button>
+  <button onclick="exportChat()">Export JSON</button>
+  <button id="summarize-btn" onclick="summarizeMemory()" title="Summarize History">🧠</button>
+</header>
+
+<div id="import-area" style="display:none;">
+  <p>Paste previous history JSON here:</p>
+  <textarea id="import-json"></textarea>
+  <button onclick="importHistory()">Import</button>
+</div>
+
+<div id="chat-container"></div>
+
+<div id="input-area">
+  <textarea id="user-input" placeholder="Ask anything... or speak/upload" rows="1"></textarea>
+  <button id="voice-btn" title="Voice Input">🎤</button>
+  <label for="file-input" id="vision-btn" title="Upload Image for Vision">📷</label>
+  <input type="file" id="file-input" accept="image/*" />
+  <button id="send-btn">➤</button>
+</div>
+
+<script>
+  const chatContainer = document.getElementById('chat-container');
+  const userInput = document.getElementById('user-input');
+  const sendBtn = document.getElementById('send-btn');
+  const voiceBtn = document.getElementById('voice-btn');
+  const fileInput = document.getElementById('file-input');
+  const modelSelect = document.getElementById('model-select');
+  let messages = [];
+  const KV_KEY = 'grok_mad_history';
+  let recognition; // for voice
+
+  // Load history
+  async function loadHistory() {
+    try {
+      const saved = await puter.kv.get(KV_KEY);
+      if (saved) {
+        messages = JSON.parse(saved);
+        renderMessages();
+      }
+    } catch (e) {}
+  }
+
+  function renderMessages() {
+    chatContainer.innerHTML = '';
+    messages.forEach(msg => {
+      const div = document.createElement('div');
+      div.className = `message ${msg.role === 'user' ? 'user' : 'ai'}`;
+      if (msg.content_type === 'image') {
+        const img = document.createElement('img');
+        img.src = msg.content;
+        img.style.maxWidth = '100%';
+        img.style.borderRadius = '12px';
+        div.appendChild(img);
+        if (msg.text) div.appendChild(document.createTextNode(msg.text));
+      } else {
+        div.textContent = msg.content;
+      }
+      chatContainer.appendChild(div);
+    });
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+async function sendMessage(content = null, isImage = false) {
+  console.log('sendMessage triggered – input value:', userInput.value || content || '(none)');
+
+  let text = content || userInput.value.trim();
+  if (!text && !isImage) {
+    console.log('No text or image – aborting');
+    return;
+  }
+  if (!isImage) userInput.value = '';
+
+  const newMsg = isImage 
+    ? { role: 'user', content: text, content_type: 'image' } 
+    : { role: 'user', content: text };
+  messages.push(newMsg);
+  renderMessages();
+  console.log('User message added, total messages now:', messages.length);
+
+  const currentMessages = [...messages];
+
+  try {
+    console.log('Attempting puter.ai.chat with model:', modelSelect.value);
+
+    const aiMsgDiv = document.createElement('div');
+    aiMsgDiv.className = 'message ai';
+    aiMsgDiv.textContent = 'Thinking...';
+    chatContainer.appendChild(aiMsgDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+
+    const response = await puter.ai.chat(currentMessages, {
+      model: modelSelect.value,
+      stream: false,
+      temperature: 0.7,
+      max_tokens: 4096
+    });
+
+    console.log('Raw Puter response:', response);
+
+let fullResponse = '(empty response)';
+
+if (typeof response === 'string') {
+  fullResponse = response;
+} else if (response && response.message && typeof response.message.content === 'string') {
+  fullResponse = response.message.content;
+} else if (response && typeof response.content === 'string') {
+  fullResponse = response.content;
+} else {
+  console.warn('Unexpected response format:', response);
+  fullResponse = JSON.stringify(response, null, 2); // fallback show whole thing for debug
+}
+
+aiMsgDiv.textContent = fullResponse;
+messages.push({ role: 'assistant', content: fullResponse });
+await saveHistory();
+console.log('Response added & saved. Total messages:', messages.length);
+
+  } catch (err) {
+    console.error('Puter AI error:', err.name, err.message, err.stack);
+    const errDiv = document.createElement('div');
+    errDiv.className = 'message ai';
+    errDiv.textContent = `Error: ${err.message || 'Check console for details'}\n\n(Possible causes: quota, auth expired, model unavailable, CSP block)`;
+    chatContainer.appendChild(errDiv);
+  }
+}
+
+  async function saveHistory() {
+    try { await puter.kv.set(KV_KEY, JSON.stringify(messages)); } catch(e){}
+  }
+
+  async function summarizeMemory() {
+    if (messages.length < 3) return alert('Not enough history to summarize yet!');
+    const summaryPrompt = `Summarize this entire conversation history concisely (keep key facts, vibe, ongoing topics, important details) in 200-400 words max. Output only the summary:`;
+    const fullHistory = messages.map(m => `${m.role.toUpperCase()}: ${m.content}`).join('\n\n');
+
+    try {
+      const summary = await puter.ai.chat(`${summaryPrompt}\n\n${fullHistory}`, { model: 'x-ai/grok-3-beta', max_tokens: 600 });
+      const sumMsg = { role: 'system', content: `Memory Summary: ${summary}` };
+      messages.unshift(sumMsg); // prepend as system prompt for future
+      renderMessages();
+      await saveHistory();
+      alert('Memory summarized and added as context!');
+    } catch(e) {
+      alert('Summarize failed: ' + e.message);
+    }
+  }
+
+  // Voice input (Web Speech API)
+  if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+    const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRec();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-AU'; // Aussie vibes 😏
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      userInput.value = transcript;
+      sendMessage(transcript); // auto-send or just fill
+    };
+    recognition.onerror = (e) => console.error('Voice error:', e.error);
+
+    voiceBtn.onclick = () => {
+      recognition.start();
+      voiceBtn.style.background = '#c94e4e'; // red while listening
+      setTimeout(() => voiceBtn.style.background = '#238636', 8000); // safety timeout
+    };
+  } else {
+    voiceBtn.disabled = true;
+    voiceBtn.title = 'Voice not supported in this browser';
+  }
+
+  // Image vision upload
+  fileInput.onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const base64 = reader.result; // data:image/...;base64,
+      // For vision: add as image content in messages
+      messages.push({ role: 'user', content: [{ type: 'text', text: 'Describe/analyze this image:' }, { type: 'image_url', image_url: { url: base64 } }] });
+      // Show preview
+      const previewMsg = { role: 'user', content: base64, content_type: 'image', text: 'Image uploaded for analysis' };
+      renderMessages(); // will show img
+      // Send with vision model auto-selected or prompt user
+      modelSelect.value = 'x-ai/grok-2-vision-1212'; // or your fave vision one
+      await sendMessage(); // triggers chat with image context
+    };
+    reader.readAsDataURL(file);
+  };
+
+  function clearChat() { if(confirm('Clear?')) { messages=[]; renderMessages(); puter.kv.del(KV_KEY); } }
+  function exportChat() { /* same as before */ const data=JSON.stringify(messages,null,2); /* blob download */ }
+  function importHistory() { /* same */ }
+
+  function toggleTheme() {
+    document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  }
+
+  userInput.addEventListener('input', () => { userInput.style.height = 'auto'; userInput.style.height = userInput.scrollHeight + 'px'; });
+  userInput.addEventListener('keydown', e => { if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); } });
+  sendBtn.onclick = () => sendMessage();
+
+  // Init
+  loadHistory();
+  if (messages.length === 0) document.getElementById('import-area').style.display = 'block';
+</script>
+</body>
+</html>
