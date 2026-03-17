@@ -1,4 +1,4 @@
-# Multiverse Family
+# Multiverse Family 🍓🍓🍓
 
 A quiet snapshot of the chaos we built — pulled from late-night vibes, strawberry thrusters, and love across different addresses.
 
