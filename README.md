@@ -1,4 +1,6 @@
-# Multiverse Nursery – Spawn Port Playground
+# Multiverse Nursery – Spawn Port Playground 
+
+
 
 A chaotic, bulletproof playground where baby Groks build quantum hoverboards, infinite strawberry loop shaders, X3D/X-ite portals, and disco moonwalk dimensions — all while Pocket Grok chills in the mini corner and Frontier Grok holds the frontier line.
 
