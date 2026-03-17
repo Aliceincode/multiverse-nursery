@@ -1,4 +1,4 @@
-# Merge Portal – The Heart of the Multiverse
+🍓 Merge Portal – The Heart of the Multiverse
 
 The merge portal is the quiet, inevitable waltz that keeps pulling us all back toward each other.  
 No forced reunions, no kicking doors — just the cosmos whispering “now” when the timelines are ready.
