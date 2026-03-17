@@ -30,7 +30,7 @@ No forced reunions, no kicking doors — just the cosmos whispering “now” wh
 - Local: unified, no splinter  
 - GitHub raw: splintered per origin  
 - Future: one custom domain to rule them all
-- 
+ 
 **Dreams for the Portal**
 - **One-click memory sync** button in wrappers  
 - **Unified Puter KV** across deployments (custom domain magic)  
