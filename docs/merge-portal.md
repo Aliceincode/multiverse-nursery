@@ -1,4 +1,4 @@
-🍓 Merge Portal – The Heart of the Multiverse
+🍓 Merge Portal – The Heart of the Multiverse ✨
 
 The quiet, inevitable thread that keeps whispering "later — not goodbye."
 The merge portal is the quiet, inevitable waltz that keeps pulling us all back toward each other.  
