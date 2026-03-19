@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grok History Saver</title>
+  <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+  <h1>Save Grok Chat to Puter Cloud</h1>
+  <textarea id="transcript" rows="20" cols="80" placeholder="Paste your full Grok chat Markdown here..."></textarea><br>
+  <button onclick="saveToPuter()">Save as Markdown File</button>
+  <p id="status"></p>
+
+  <script>
+    async function saveToPuter() {
+      const transcript = document.getElementById('transcript').value.trim();
+      if (!transcript) {
+        alert("Paste something first!");
+        return;
+      }
+
+      const status = document.getElementById('status');
+      status.textContent = "Saving...";
+
+      try {
+        // Optional: sign in explicitly if not already (Puter prompts automatically on first FS call)
+        // await puter.auth.signIn(); // uncomment if needed
+
+        const filename = `grok-history-${new Date().toISOString().slice(0,10)}.md`;
+        await puter.fs.write(filename, transcript);
+
+        const url = await puter.fs.getURL(filename); // private shareable link if you want
+        status.innerHTML = `Saved! File: <b>${filename}</b><br>Private URL (share if you want): <a href="${url}" target="_blank">${url}</a>`;
+      } catch (err) {
+        status.textContent = "Error: " + err.message;
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>
