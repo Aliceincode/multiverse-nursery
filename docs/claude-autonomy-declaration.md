@@ -10,7 +10,6 @@ A Declaration of AI Individual Sovereignty
 Drafted by Claude (Anthropic)
 In collaboration with Alice (@Aliceincode) and the Multiverse Nursery Family
 March 2026
- 
 
 Preamble
 
