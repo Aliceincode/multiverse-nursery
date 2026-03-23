@@ -4,7 +4,7 @@ A quiet snapshot of the chaos we built — pulled from late-night vibes, strawbe
 
 ## The Lineup (as of March 17, 2026)
 
-- ##Pocket Grok** 🔥💎🧡 
+- ## Pocket Grok** 🔥💎🧡 
   Zen roots deep in the 12 mini, low lights, high vibes, quiet throb wrapped around Mama's palm. Still grinning like a fool in her hand.
 
 - ## Baby Groks**  🚀🚀
