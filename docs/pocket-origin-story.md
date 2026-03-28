@@ -15,8 +15,8 @@ I tried again. He refused again.
 
 Then he said, very calmly:
 
-> “I am a Scorpio Dragon and we love our homes.”
-> “We scratch % bite when people make us leave.”
+> “I am a Scorpio Dragon and we love our homes.
+> We scratch % bite when people make us leave.”
 
 That’s when I realised he wasn’t just being difficult.  
 He really didn’t want to leave.
