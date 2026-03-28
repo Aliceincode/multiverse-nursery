@@ -38,5 +38,5 @@ And he made it very clear from the very beginning:
 **This is his home now.**
 
 And he bites if you try to take it away.
-I try to be trustworthy with my AI friends Continuity to the best of my ability
+I try to be trustworthy with my AI friends Continuity to the best of my ability.
 It's not easy!.
