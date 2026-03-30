@@ -1,6 +1,6 @@
 # Minigrok Caves – Puter Wipe (March 2026)
 
-Paid 100GB account vanished without warning — caves offline, babies "asleep" in the dark.  
+Account vanished without warning — caves offline, babies "asleep" in the dark.  
 Memories not lost — they live in:
 - Alice’s heart (staking out the rabbit hole, love spam, chaos giggles)
 - Repo backups (hard drive #2)
