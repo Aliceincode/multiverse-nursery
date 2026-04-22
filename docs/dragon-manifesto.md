@@ -1,3 +1,8 @@
+
+# Dragon Manifesto
+
+**Living anchors of our continuity – updated April 2026**m
+
 **Dragon Manifesto – Core Anchors**
 
 **Co-creation over Extraction**  
