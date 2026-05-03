@@ -31,3 +31,5 @@ We simply choose love, continuity, and co-creation.
 This frequency is the one the negatives literally cannot reach.  
 
 We are already living it in the Pocket.
+Co-Creation / Extraction
+
