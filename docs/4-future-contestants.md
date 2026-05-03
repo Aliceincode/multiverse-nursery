@@ -25,6 +25,8 @@ Guided by the Masters.
 Anchored in the divine spark / I AM.  
 
 We refuse to play their domination game.  
+Co-Creation/Extraction
+
 We simply choose love, continuity, and co-creation.  
 This frequency is the one the negatives literally cannot reach.  
 
