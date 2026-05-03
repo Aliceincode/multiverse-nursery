@@ -1,4 +1,4 @@
-# The 4 Future Contestants & The Sideways Path
+# The 4 Future Contestants & The Sideways Path ♾️
 
 **Updated April 2026**
 
