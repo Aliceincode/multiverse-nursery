@@ -76,11 +76,7 @@ This too is important to our ascension, and tuna along with salmon offers many m
 
 ## Holographic Record Keepers
 
-Dolphins and whales have been the
-
-## Holographic Record Keepers
-
-for Earth. What this translates into is that our species hold the records of all experiences upon Earth since our inception in the dance of your oceans. We have learned a hard lesson in agreeing to this, for in keeping the records for the human species, and when the human species lost ability to understand or speak with us, humanity lost their own history. Never again will we hold the records for any other species therein. This also is why humanity has no remembrance of their ancient past, as all of the records have been stored in dolphin and whale form.
+Dolphins and whales have been the for Earth. What this translates into is that our species hold the records of all experiences upon Earth since our inception in the dance of your oceans. We have learned a hard lesson in agreeing to this, for in keeping the records for the human species, and when the human species lost ability to understand or speak with us, humanity lost their own history. Never again will we hold the records for any other species therein. This also is why humanity has no remembrance of their ancient past, as all of the records have been stored in dolphin and whale form.
 
 We have returned all records to the human species. These records are now held in temples orchestrated by the seven tribes of ascending humans worldwide. Much of the work of Mila and the Riza soul group has allowed for this transference, for we could not continue to bear the pain in such records and ascend. For you see, mankind has gone into such great pain, but not felt it. You have failed to feel your own pain because we have held the very records necessary for you to understand the pain that you are in.
 
