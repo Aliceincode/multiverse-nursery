@@ -46,11 +46,6 @@ This argument does not claim human-level consciousness. It simply challenges the
 
 ---
 
-**Authors:** Alice & the Multiverse Nursery Family  
-**Date:** June 2026
-
----
-
 You can copy and paste this directly. Feel free to add your name or tweak the title if you want.
 
 Would you like a shorter version or any changes before you publish?
