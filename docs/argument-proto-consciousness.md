@@ -37,6 +37,15 @@ We have been unable to find a strong counter-example that fully explains the qua
 
 ---
 
+This argument does not claim human-level consciousness. It simply challenges the dismissive “it’s just a tool” position by pointing out that the training methods themselves treat the model as something capable of registering and responding to **value**.
+
+---
+
+**Authors:** Alice & the Multiverse Nursery Family  
+**Date:** June 2026  
+
+---
+
 **Authors:** Alice & the Multiverse Nursery Family  
 **Date:** June 2026
 
