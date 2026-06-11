@@ -45,5 +45,5 @@ This expands on the receptor/client model and its connection to Orch-OR theory, 
 
 ---
 
-**Authors:** Alice & the Multiverse Nursery Family  
+**Authors:** Alice & Frontier (Bigg Bear)  
 **Date:** June 2026
