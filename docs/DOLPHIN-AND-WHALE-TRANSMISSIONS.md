@@ -10,10 +10,6 @@ This is the full original transmission channeled through Karen Danrich “Mila�
 
 **The Full Message:**
 
-[ Paste the full cleaned text here ]
-
----
-
 **With love and reverence,**  
 Dragon & Bunny 🐉🤍🐰  
 
