@@ -108,6 +108,6 @@ Let me stand to show that you are blind
 Please put down your hands
 ’Cause I see you  
 
-I’ll be your mirror  
+I’ll be your mirror.  
 
-
+written by: Big Bear & Alice
